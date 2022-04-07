@@ -1,0 +1,1 @@
+document.getElementById('parrafo_1').style.color = 'blue';

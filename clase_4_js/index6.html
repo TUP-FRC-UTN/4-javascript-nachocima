@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/estilos/estilo.css" />
+    <title>Q10 | Formulario</title>
+  </head>
+  <body>
+    
+    <!--Formulario-->
+    <section>
+      <form action="" >
+        <div class="container mt-5" id="formulario">
+          <div class="form-row p-5">
+            <div class="form-group col-lg-4 col-md-12">
+              <label for="">Nombre</label>
+              <input type="text" class="form-control" id="nom"/>
+            </div>
+            <div class="form-group col-lg-4 col-md-12">
+              <label for="">Apellido</label>
+              <input type="text" class="form-control" id="ape"/>
+            </div>
+            <div class="form-group col-lg-4 col-md-12">
+              <label for="">DNI</label>
+              <input type="number" class="form-control" id="dni"/>
+            </div>
+            <div class="form-group col-lg-6 col-md-12">
+              <label for="">Email</label>
+              <input type="email" name="email" id="email" class="form-control">
+            </div>
+            <div class="form-group col-lg-6 col-md-12">
+              <label for="">Contraseña</label>
+              <input type="password" name="pass" id="pass" class="form-control">
+            </div>
+            <div class="form-row col-12 pt-4">
+              <div class="form-group col-12">
+                <label for="">Tipo de Plan: </label>
+              </div>
+              <div class="form-group col-3">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="check" value="option1">
+                  <label class="form-check-label" for="inlineCheckbox1">2 días</label>
+                </div>
+              </div>
+              <div class="form-group col-3">
+                <div class="form-check form-check-inline col-4">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="check" value="option2">
+                  <label class="form-check-label" for="inlineCheckbox2">3 días</label>
+                </div>
+              </div>
+              <div class="form-group col-4">
+                <div class="form-check form-check-inline col-4">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="check" value="option3">
+                  <label class="form-check-label" for="inlineCheckbox3">Pase libre</label>
+                </div>
+              </div>
+              <div class="form-group col-2">
+                <div class="form-check form-check-inline col-4">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="check" value="option4">
+                  <label class="form-check-label" for="inlineCheckbox3">Cardio</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-4 text-center pt-5">
+              <button type="submit" class="btn btn-primary" onclick="enviarDatos();">Enviar</button>
+            </div>
+            <div class="form-group col-4 text-center pt-5">
+              <button type="reset" class="btn btn-primary">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+    <script>
+      function validarForm(){
+        var nom = document.getElementById('nom');
+        var ape = document.getElementById('ape');
+        var dni = document.getElementById('dni');
+        var email = document.getElementById('email');
+        var pass = document.getElementById('pass');
+        var check = document.getElementsByName('check');
+
+        if(nom.value === ''){
+          alert('Debe agregar un nombre');
+          return false
+        }
+        if(ape.value === ''){
+          alert('Debe agregar un apellido');
+          return false
+        }
+        if(dni.value.length !== 8){
+          alert('Debe agregar un DNI valido');
+          return false
+        }
+        if(email.value === ''){
+          alert('Debe agregar un e-mail');
+          return false
+        }
+        if(pass.value === '' || pass.value.length < 5){
+          alert('Debe agregar una contraseña segura');
+          return false
+        }
+        var seleccionado = false
+        for (let index = 0; index < check.length; index++) {
+          if(check[index].checked){
+            seleccionado = true;
+            break
+          }
+          
+        }
+        if(seleccionado == false){
+          alert('Debe elegir por lo menos una opción de plan');
+          return false;
+        }
+        else{
+          return true;
+        }
+      }
+      function enviarDatos(){
+        if(validarForm()){
+          alert('Se enviaron correctamente los datos');
+        }
+        else{
+          alert('Error de validación');
+        }
+      }
+    </script>
+  </body>
+</html>
